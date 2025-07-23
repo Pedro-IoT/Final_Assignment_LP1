@@ -96,7 +96,7 @@ int main() {
     // Distribuição dos Imóveis entre os Avaliadores
     // Cria um vetor de vetores, onde cada vetor interno conterá os imóveis atribuídos a um avaliador
     vector<vector<Imovel>> imoveisPorAvaliador(avaliadores.size());
-    for (int i = 0; i < imoveis.size(); ++i) {
+    for (size_t i = 0; i < imoveis.size(); ++i) {
         // Usa o operador módulo (%) para distribuir os imóveis de forma circular entre os avaliadores
         int indexAvaliador = i % avaliadores.size(); 
         imoveisPorAvaliador[indexAvaliador].push_back(imoveis[i]);
@@ -107,7 +107,7 @@ int main() {
     vector<vector<pair<int, Imovel>>> agenda(avaliadores.size());
 
     // Itera sobre cada avaliador para montar sua agenda individual
-    for (int i = 0; i < avaliadores.size(); ++i) {
+    for (size_t i = 0; i < avaliadores.size(); ++i) {
         // Se um avaliador não recebeu nenhum imóvel, pula para o próximo
         if (imoveisPorAvaliador[i].empty()) {
             continue;
@@ -167,7 +167,7 @@ int main() {
 
     // Impressão das Agendas
     // Itera sobre os avaliadores para imprimir suas agendas formatadas
-    for (int i = 0; i < avaliadores.size(); ++i) {
+    for (size_t i = 0; i < avaliadores.size(); ++i) {
         // Pula avaliadores sem agenda
         if (agenda[i].empty()) {
             continue;
@@ -189,7 +189,7 @@ int main() {
         // Lógica para imprimir uma linha em branco entre as agendas de diferentes corretores
         bool hasNext = false;
         // Verifica se existe algum corretor com uma agenda não vazia
-        for (int j = i+1; j < avaliadores.size(); ++j) {
+        for (size_t j = i+1; j < avaliadores.size(); ++j) {
             if (!agenda[j].empty()) {
                 hasNext = true;
                 break;
